@@ -6,11 +6,19 @@
 package javafxapplication2;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -21,20 +29,42 @@ public class JavaFXApplication2 extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
+        
+        HBox root = new HBox();
+        root.setPadding(new Insets(50));
+        
+        Button btn = new Button("_hehe");
+        Tooltip tooltip = new Tooltip("kliknij tooo!");
+        Tooltip.install(btn, tooltip);
+        
+        btn.setOnAction((ActionEvent event) -> {
+            System.out.println("Hello World!");
+            Platform.exit();
         });
         
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        Button btn2 = new Button("_przycisk");
+        Tooltip tooltip2 = new Tooltip("kliknij tooo!");
+        Tooltip.install(btn, tooltip);
         
-        Scene scene = new Scene(root, 300, 250);
+        btn2.setOnAction((ActionEvent event) -> {
+            System.out.println("HAHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHAHAHAH");
+        });
+    
+        root.getChildren().add(btn);
+        root.getChildren().add(btn2);
+        
+        
+      
+        Scene scene = new Scene(root,500,300);
+        scene.getStylesheets().add(this.getClass().getResource("css.css")
+                .toExternalForm());
+        
+        Text lbl = new Text("Simple JavaFX application.");
+        lbl.setFont(Font.font("Serif", FontWeight.NORMAL, 20));
+        root.getChildren().add(lbl);
+        
+        lbl.setId("text");
+        root.setId("root");
         
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
