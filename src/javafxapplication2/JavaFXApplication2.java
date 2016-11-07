@@ -11,10 +11,12 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -36,8 +38,11 @@ public class JavaFXApplication2 extends Application {
     @Override
     public void start(Stage primaryStage) {
         
-        FlowPane root = new FlowPane();
+        BorderPane root = new BorderPane();
         root.setPadding(new Insets(50));
+        
+       
+        Pane root3 = new Pane();
         
         Button btn = new Button("_hehe");
         Tooltip tooltip = new Tooltip("kliknij tooo!");
@@ -69,33 +74,32 @@ public class JavaFXApplication2 extends Application {
         circle.setFill(Color.CHOCOLATE);
         
         root2.getChildren().addAll(line, circle);
+        
+        
 
-        Scene scene = new Scene(root, 250, 220, Color.WHITESMOKE);
+        Scene scene = new Scene(root, 500, 500, Color.WHITESMOKE);
         
         scene.getStylesheets().add(this.getClass().getResource("css.css")
                 .toExternalForm());
-        root.getChildren().add(btn);
-        root.getChildren().add(btn2);
        
         
         Text lbl = new Text("Simple JavaFX application.");
         lbl.setFont(Font.font("Serif", FontWeight.NORMAL, 20));
-        root.getChildren().add(lbl);
+        root3.getChildren().addAll(btn,btn2,lbl);
         
         lbl.setId("text");
         root.setId("root");
         
+        root.setRight(root2);
+        root.setLeft(root3);
         
-        root.getChildren().add(root2);
         
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
         launch(args);
     }
