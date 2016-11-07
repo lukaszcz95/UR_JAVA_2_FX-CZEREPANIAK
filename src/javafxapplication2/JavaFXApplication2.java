@@ -90,8 +90,8 @@ public class JavaFXApplication2 extends Application {
         lbl.setId("text");
         root.setId("root");
         
-        root.setRight(root2);
-        root.setLeft(root3);
+        root.setTop(root2);
+        root.setBottom(root3);
         
         
         primaryStage.setTitle("Hello World!");
