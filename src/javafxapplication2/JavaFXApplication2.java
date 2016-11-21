@@ -15,6 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
@@ -34,12 +35,12 @@ import javafx.stage.Stage;
  * @author student
  */
 public class JavaFXApplication2 extends Application {
-    
+   
     @Override
     public void start(Stage primaryStage) {
         
         BorderPane root = new BorderPane();
-        root.setPadding(new Insets(50));
+        root.setPadding(new Insets(20));
         
        
         Pane root3 = new Pane();
@@ -60,6 +61,10 @@ public class JavaFXApplication2 extends Application {
         btn2.setOnAction((ActionEvent event) -> {
             System.out.println("HAHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHAHAHAH");
         });
+        
+         Slider slider = new Slider(0, 100, 0);
+         slider.valueProperty().addListener(new MyChangeListener());
+
     
     Pane root2 = new Pane();
         
@@ -86,12 +91,11 @@ public class JavaFXApplication2 extends Application {
         
         Text lbl = new Text("Simple JavaFX application.");
         lbl.setFont(Font.font("Serif", FontWeight.NORMAL, 20));
-        root3.getChildren().addAll(btn,btn2,lbl);
+        root3.getChildren().addAll(btn,btn2,lbl,slider);
         
         lbl.setId("text");
         root.setId("root");
         
-        root.setTop(root2);
         root.setBottom(root3);
         
         
