@@ -60,6 +60,7 @@ public class JavaFXApplication2 extends Application {
         btn2.setOnAction((ActionEvent event) -> {
             System.out.println("HAHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHAHAHAH");
         });
+    
     Pane root2 = new Pane();
         
         
